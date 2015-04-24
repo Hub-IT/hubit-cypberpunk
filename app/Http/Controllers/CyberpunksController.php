@@ -12,8 +12,7 @@ class CyberpunksController extends Controller {
 	 */
 	public function index()
 	{
-		$cyberpunks = Cyberpunk::has('courses')
-			->with('courses')
+		$cyberpunks = Cyberpunk::with('courses')
 			->get();
 
 		return view('cyberpunks.index', compact('cyberpunks'));

@@ -8,4 +8,5 @@ class_name: FunctionalTester
 modules:
     enabled: [Laravel5, Filesystem, FunctionalHelper]
     config:
-      environment_file: .env.testing
+      Laravel5:
+        environment_file: .env.testing
