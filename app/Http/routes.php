@@ -13,9 +13,10 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+Route::get('dashboard', ['as'   => 'dashboard_path',
+                         'uses' => 'DashboardController@index']);
 
 Route::controllers([
-	'auth' => 'Auth\AuthController',
+	'auth'     => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
