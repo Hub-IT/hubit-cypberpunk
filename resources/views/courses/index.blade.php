@@ -41,7 +41,7 @@
                         <td>
                             <div class="btn-group">
                                 {!! link_to_route('courses.edit', 'Edit', $course, ['class' => 'btn btn-info
-                                btn-flat']) !!}
+                                btn-flat', 'id' => 'id-edit-' . $course->id]) !!}
                                 <button type="button" class="btn btn-info btn-flat dropdown-toggle"
                                         data-toggle="dropdown">
                                     <span class="caret"></span>

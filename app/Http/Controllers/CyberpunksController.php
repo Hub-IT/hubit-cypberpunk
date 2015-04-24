@@ -78,9 +78,6 @@ class CyberpunksController extends Controller {
 
 		$cyberpunk = Cyberpunk::find($id);
 
-//		$cyberpunk->name = $data['name'];
-//		$cyberpunk->email = $data['email'];
-//		$cyberpunk->deree_student_id = $data['deree_student_id'];
 		$cyberpunk->fill($data);
 
 		$cyberpunk->save();

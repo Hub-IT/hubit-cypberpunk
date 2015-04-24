@@ -22,5 +22,8 @@ $I->fillField('Email:', $cyberpunkDummy['email']);
 $I->fillField('DEREE ID:', $cyberpunkDummy['deree_student_id']);
 $I->click('Update');
 
+$I->seeRecord('cyberpunks', $cyberpunkDummy);
+
 $I->see('Cyberpunk successfully updated!');
 $I->seeCurrentRouteIs('cyberpunks.edit', $cyberpunk);
+

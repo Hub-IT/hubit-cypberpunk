@@ -2,6 +2,9 @@
 
 use App\Course;
 use App\Http\Requests;
+use App\Http\Requests\UpdateCourseRequest;
+use Illuminate\Support\Facades\Input;
+use Laracasts\Flash\Flash;
 
 class CoursesController extends Controller {
 
@@ -24,7 +27,7 @@ class CoursesController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('courses.create');
 	}
 
 	/**
@@ -56,18 +59,31 @@ class CoursesController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$course = Course::find($id);
+
+		return view('courses.edit', compact('course'));
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  int $id
+	 * @param UpdateCourseRequest $updateCourseRequest
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, UpdateCourseRequest $updateCourseRequest)
 	{
-		//
+		$data = Input::only(['name']);
+
+		$course = Course::find($id);
+
+		$course->fill($data);
+
+		$course->save();
+
+		Flash::success("Course successfully updated!");
+
+		return redirect()->back();
 	}
 
 	/**
