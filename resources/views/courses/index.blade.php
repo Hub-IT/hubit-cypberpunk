@@ -31,24 +31,66 @@
             <table id="table-cyberpunks" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                    <th></th>
                     <th>Name</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($courses as $course)
                     <tr>
+                        <td>
+                            <div class="btn-group">
+                                {!! link_to_route('courses.edit', 'Edit', $course, ['class' => 'btn btn-info
+                                btn-flat']) !!}
+                                <button type="button" class="btn btn-info btn-flat dropdown-toggle"
+                                        data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        {!! Form::open(['method' => 'DELETE', 'route' => ['courses.destroy',
+                                        $course->id]]) !!}
+
+                                        {!! Form::submit('Delete', ['class' => 'btn btn-block btn-warning
+                                        btn-flat']) !!}
+
+                                        {!! Form::close() !!}
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
                         <td>{{ $course->name }}</td>
                     </tr>
                 @endforeach
-                </tbody>
                 <tfoot>
                 <tr>
+                    <th></th>
                     <th>Name</th>
                 </tr>
                 </tfoot>
             </table>
-        </div><!-- /.box-body -->
-    </div><!-- /.box -->
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            Footer
+        </div>
+        <!-- /.box-footer-->
+    </div>
+    <!-- /.box -->
+
+@endsection
+
+@section('scripts')
+    <!-- DataTables -->
+    <script src="{!! asset('packages/bower/admin-lte/plugins/datatables/jquery.dataTables.js') !!}"></script>
+    <script src="{!! asset('packages/bower/admin-lte/plugins/datatables/dataTables.bootstrap.js') !!}"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#animalsTable").dataTable();
+        });
+    </script>
 @endsection
 
 @section('scripts')
