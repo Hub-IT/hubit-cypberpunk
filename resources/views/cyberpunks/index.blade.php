@@ -31,6 +31,7 @@
             <table id="table-cyberpunks" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                    <td></td>
                     <th>Name</th>
                     <th>Email</th>
                     <th>DEREE ID</th>
@@ -40,6 +41,28 @@
                 <tbody>
                 @foreach($cyberpunks as $cyberpunk)
                     <tr>
+                        <td>
+                            <div class="btn-group">
+                                {!! link_to_route('cyberpunks.edit', 'Edit', $cyberpunk, ['class' => 'btn btn-info
+                                btn-flat', 'id' => 'id-edit-' . $cyberpunk->id]) !!}
+                                <button type="button" class="btn btn-info btn-flat dropdown-toggle"
+                                        data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        {!! Form::open(['method' => 'DELETE', 'route' => ['cyberpunks.destroy',
+                                        $cyberpunk->id]]) !!}
+
+                                        {!! Form::submit('Delete', ['class' => 'btn btn-block btn-warning
+                                        btn-flat']) !!}
+
+                                        {!! Form::close() !!}
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
                         <td>{{ $cyberpunk->name }}</td>
                         <td>{{ $cyberpunk->email }}</td>
                         <td>{{ $cyberpunk->deree_student_id }}</td>
@@ -53,6 +76,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
+                    <td></td>
                     <th>Name</th>
                     <th>Email</th>
                     <th>DEREE ID</th>

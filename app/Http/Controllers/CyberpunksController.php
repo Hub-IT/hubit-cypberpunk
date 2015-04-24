@@ -2,6 +2,9 @@
 
 use App\Cyberpunk;
 use App\Http\Requests;
+use App\Http\Requests\UpdateCyberpunkRequest;
+use Illuminate\Support\Facades\Input;
+use Laracasts\Flash\Flash;
 
 class CyberpunksController extends Controller {
 
@@ -25,7 +28,7 @@ class CyberpunksController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('cyberpunks.create');
 	}
 
 	/**
@@ -57,18 +60,34 @@ class CyberpunksController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$cyberpunk = Cyberpunk::find($id);
+
+		return view('cyberpunks.edit', compact('cyberpunk'));
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  int $id
+	 * @param UpdateCyberpunkRequest $updateCyberpunkRequest
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, UpdateCyberpunkRequest $updateCyberpunkRequest)
 	{
-		//
+		$data = Input::only(['name', 'email', 'deree_student_id']);
+
+		$cyberpunk = Cyberpunk::find($id);
+
+//		$cyberpunk->name = $data['name'];
+//		$cyberpunk->email = $data['email'];
+//		$cyberpunk->deree_student_id = $data['deree_student_id'];
+		$cyberpunk->fill($data);
+
+		$cyberpunk->save();
+
+		Flash::success("Cyberpunk successfully updated!");
+
+		return redirect()->back();
 	}
 
 	/**

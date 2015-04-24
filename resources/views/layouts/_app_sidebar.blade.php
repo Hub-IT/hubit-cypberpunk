@@ -32,12 +32,12 @@
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="{{ set_active(['cyberpunks.index']) }}">
+            <li class="{{ set_active(['cyberpunks.index', 'cyberpunks.edit']) }}">
                 <a href="{!! route('cyberpunks.index') !!}">
                     <i class="fa fa-users"></i> <span>Cyberpunks</span>
                 </a>
             </li>
-            <li class="{{ set_active(['courses.index']) }}">
+            <li class="{{ set_active(['courses.index', 'courses.edit']) }}">
                 <a href="{!! route('courses.index') !!}">
                     <i class="fa fa-book"></i> <span>Courses</span>
                 </a>
