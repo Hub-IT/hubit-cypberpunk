@@ -13,7 +13,7 @@ class CyberpunksTableSeeder extends Seeder {
 	{
 		$faker = Factory::create();
 
-		foreach (range(1, 50) as $index)
+		foreach (range(1, 13) as $index)
 		{
 			Cyberpunk::create([
 				'name'             => $faker->name,

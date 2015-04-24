@@ -37,6 +37,11 @@
                     <i class="fa fa-users"></i> <span>Cyberpunks</span>
                 </a>
             </li>
+            <li class="{{ set_active(['courses.index']) }}">
+                <a href="{!! route('courses.index') !!}">
+                    <i class="fa fa-book"></i> <span>Courses</span>
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

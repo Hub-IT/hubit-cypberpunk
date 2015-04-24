@@ -17,6 +17,7 @@ Route::get('dashboard', ['as'   => 'dashboard_path',
                          'uses' => 'DashboardController@index']);
 
 Route::resource('cyberpunks', 'CyberpunksController');
+Route::resource('courses', 'CoursesController');
 
 Route::controllers([
 	'auth'     => 'Auth\AuthController',
