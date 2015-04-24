@@ -27,7 +27,7 @@
             <h3 class="box-title">Register</h3>
         </div><!-- /.box-header -->
         <!-- form start -->
-        {!! Form::model($course, ['method' => 'PUT', 'route' => ['courses.update', $course->id], 'role' =>
+        {!! Form::model($course, ['method' => 'POST', 'route' => ['courses.store', $course->id], 'role' =>
         'form']) !!}
 
         <div class="box-body">
@@ -40,7 +40,7 @@
         <!-- /.box-body -->
 
         <div class="box-footer">
-            {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Register', ['class' => 'btn btn-primary']) !!}
         </div>
 
         {!! Form::close() !!}

@@ -22,5 +22,5 @@ $I->click('Update');
 
 $I->seeRecord('cyberpunks', $cyberpunkDummy);
 
-$I->see('Cyberpunk successfully created!');
+$I->see('Cyberpunk successfully registered!');
 

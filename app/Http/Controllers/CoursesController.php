@@ -2,6 +2,7 @@
 
 use App\Course;
 use App\Http\Requests;
+use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use Illuminate\Support\Facades\Input;
 use Laracasts\Flash\Flash;
@@ -27,17 +28,29 @@ class CoursesController extends Controller {
 	 */
 	public function create()
 	{
-		return view('courses.create');
+		$course = new Course;
+
+		return view('courses.create', compact('course'));
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param StoreCourseRequest $storeCourseRequest
 	 * @return Response
 	 */
-	public function store()
+	public function store(StoreCourseRequest $storeCourseRequest)
 	{
-		//
+
+		$data = Input::only(['name']);
+
+		$course = new Course($data);
+
+		$course->save();
+
+		Flash::success("Course successfully register!");
+
+		return redirect()->route('courses.edit', $course);
 	}
 
 	/**

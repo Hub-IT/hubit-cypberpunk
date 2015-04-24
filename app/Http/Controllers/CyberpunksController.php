@@ -48,7 +48,7 @@ class CyberpunksController extends Controller {
 
 		$cyberpunk->save();
 
-		Flash::success("Cyberpunk successfully created!");
+		Flash::success("Cyberpunk successfully registered!");
 
 		return redirect()->route('cyberpunks.edit', $cyberpunk);
 	}
