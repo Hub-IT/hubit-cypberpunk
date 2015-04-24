@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit')
+@section('title', 'Register')
 
 @section('styles') @endsection
 
@@ -10,7 +10,7 @@
 
 @section('content-header')
     <h1>
-        Edit
+        Register
         <small>{{ Inspiring::quote() }}</small>
     </h1>
     <ol class="breadcrumb">
@@ -24,13 +24,13 @@
     <!-- Default box -->
     <div class="box box-primary">
         <div class="box-header">
-            <h3 class="box-title">Edit</h3>
+            <h3 class="box-title">Register</h3>
+
             @include('cyberpunks._toolbox')
         </div><!-- /.box-header -->
         <!-- form start -->
-        {!! Form::model($cyberpunk, ['method' => 'PUT', 'route' => ['cyberpunks.update', $cyberpunk->id], 'role' =>
+        {!! Form::model($cyberpunk, ['method' => 'POST', 'route' => ['cyberpunks.store', $cyberpunk->id], 'role' =>
         'form']) !!}
-        {!! Form::hidden('id', $cyberpunk->id) !!}
 
         <div class="box-body">
             <div class="form-group @if($errors->first('name')) has-error @endif">
@@ -60,3 +60,4 @@
     <!-- /.box -->
 
 @endsection
+

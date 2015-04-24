@@ -26,6 +26,7 @@
     <div class="box">
         <div class="box-header">
             <h3 class="box-title">Data Table With Full Features</h3>
+            @include('cyberpunks._toolbox')
         </div><!-- /.box-header -->
         <div class="box-body">
             <table id="table-cyberpunks" class="table table-bordered table-striped">

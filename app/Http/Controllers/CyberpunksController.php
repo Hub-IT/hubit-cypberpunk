@@ -2,6 +2,7 @@
 
 use App\Cyberpunk;
 use App\Http\Requests;
+use App\Http\Requests\StoreCyberpunkRequest;
 use App\Http\Requests\UpdateCyberpunkRequest;
 use Illuminate\Support\Facades\Input;
 use Laracasts\Flash\Flash;
@@ -28,17 +29,28 @@ class CyberpunksController extends Controller {
 	 */
 	public function create()
 	{
-		return view('cyberpunks.create');
+		$cyberpunk = new Cyberpunk;
+
+		return view('cyberpunks.create', compact('cyberpunk'));
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param StoreCyberpunkRequest $cyberpunkRequest
 	 * @return Response
 	 */
-	public function store()
+	public function store(StoreCyberpunkRequest $cyberpunkRequest)
 	{
-		//
+		$data = Input::only(['name', 'email', 'deree_student_id']);
+
+		$cyberpunk = new Cyberpunk($data);
+
+		$cyberpunk->save();
+
+		Flash::success("Cyberpunk successfully created!");
+
+		return redirect()->route('cyberpunks.edit', $cyberpunk);
 	}
 
 	/**
