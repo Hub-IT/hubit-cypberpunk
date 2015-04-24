@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Cyberpunk;
 use App\Http\Requests;
 
 class CyberpunksController extends Controller {
@@ -11,7 +12,11 @@ class CyberpunksController extends Controller {
 	 */
 	public function index()
 	{
-		return view('cyberpunks.index');
+		$cyberpunks = Cyberpunk::has('courses')
+			->with('courses')
+			->get();
+
+		return view('cyberpunks.index', compact('cyberpunks'));
 	}
 
 	/**

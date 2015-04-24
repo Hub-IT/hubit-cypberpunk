@@ -1,16 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard')
+@section('title', 'Cyberpunks List')
 
-@section('styles') @endsection
+@section('styles')
+    <!-- DATA TABLES -->
+    <link href="{!! asset('packages/bower/admin-lte/plugins/datatables/dataTables.bootstrap.css') !!}" rel="stylesheet" type="text/css">
+    <link href="{!! asset('packages/bower/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') !!}" rel="stylesheet" type="text/css">
+@endsection
 
 @section('inline-styles') @endsection
 
-@section('inline-scripts') @endsection
-
 @section('content-header')
     <h1>
-        Dashboard
+        All Cyberpunks
         <small>{{ Inspiring::quote() }}</small>
     </h1>
     <ol class="breadcrumb">
@@ -21,27 +23,64 @@
 @endsection
 
 @section('content')
-    <!-- Default box -->
     <div class="box">
-        <div class="box-header with-border">
-            <h3 class="box-title">Title</h3>
-
-            <div class="box-tools pull-right">
-                <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                    <i class="fa fa-minus"></i></button>
-                <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i
-                            class="fa fa-times"></i></button>
-            </div>
-        </div>
+        <div class="box-header">
+            <h3 class="box-title">Data Table With Full Features</h3>
+        </div><!-- /.box-header -->
         <div class="box-body">
-            Start creating your amazing application!
-        </div>
-        <!-- /.box-body -->
-        <div class="box-footer">
-            Footer
-        </div>
-        <!-- /.box-footer-->
-    </div>
-    <!-- /.box -->
+            <table id="table-cyberpunks" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>DEREE ID</th>
+                    <th>Courses</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($cyberpunks as $cyberpunk)
+                    <tr>
+                        <td>{{ $cyberpunk->name }}</td>
+                        <td>{{ $cyberpunk->email }}</td>
+                        <td>{{ $cyberpunk->deree_student_id }}</td>
+                        <td>
+                            <input value="@foreach($cyberpunk->courses as $course)
+                                {{ $course->name }},
+                            @endforeach" data-role="tagsinput" disabled class="tags">
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>DEREE ID</th>
+                    <th>Courses</th>
+               </tr>
+                </tfoot>
+            </table>
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
+@endsection
 
+@section('scripts')
+    <!-- DATA TABLES SCRIPT -->
+    <script src="{!! asset('packages/bower/admin-lte/plugins/datatables/jquery.dataTables.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('packages/bower/admin-lte/plugins/datatables/dataTables.bootstrap.js') !!}" type="text/javascript"></script>
+
+    <script src="{!! asset('packages/bower/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') !!}" type="text/javascript"></script>
+@endsection
+
+@section('inline-scripts')
+    <!-- page script -->
+    <script type="text/javascript">
+        $(function () {
+            $('#table-cyberpunks').dataTable();
+
+            $('.tags').tagsinput({
+                'data-role': ''
+            });
+        });
+    </script>
 @endsection
