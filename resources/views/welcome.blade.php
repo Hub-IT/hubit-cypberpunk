@@ -1,48 +1,66 @@
 <html>
-	<head>
-		<title>HubIt | CyberPunks</title>
-		
-		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+<head>
+    <title>HubIt | CyberPunks</title>
 
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-				color: #B0BEC5;
-				display: table;
-				font-weight: 100;
-				font-family: 'Lato';
-			}
+    <link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 
-			.container {
-				text-align: center;
-				display: table-cell;
-				vertical-align: middle;
-			}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            color: #B0BEC5;
+            display: table;
+            font-weight: 100;
+            font-family: 'Lato';
+        }
 
-			.content {
-				text-align: center;
-				display: inline-block;
-			}
+        .container {
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
 
-			.title {
-				font-size: 96px;
-				margin-bottom: 40px;
-			}
+        .content {
+            text-align: center;
+            display: inline-block;
+        }
 
-			.quote {
-				font-size: 24px;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="content">
-				<div class="title">HubIt | CyberPunks</div>
-				<div class="quote">{{ Inspiring::quote() }}</div>
-			</div>
-		</div>
-	</body>
+        .title {
+            font-size: 96px;
+            margin-bottom: 40px;
+        }
+
+        .quote {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+<a id="bgndVideo" class="player"
+   data-property="{videoURL:'https://www.youtube.com/watch?v=P99qJGrPNLs',containment:'body',autoPlay:true, startAt:0, opacity:1}">My
+    video</a>
+
+<div class="container">
+    <div class="content">
+        <div class="title">HubIt _> CyberPunks</div>
+        <div class="quote">{{ Inspiring::quote() }}</div>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="{!! asset('packages/bower/jquery/dist/jquery.min.js') !!}"></script>
+
+<script src="{!! asset('packages/bower/jquery.mb.ytplayer/inc/jquery.mb.YTPlayer.min.js') !!}"></script>
+
+<script>
+    $(document).ready(function () {
+        $(function () {
+            $(".player").YTPlayer();
+        });
+    });
+</script>
+
+</body>
 </html>

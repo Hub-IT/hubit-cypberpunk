@@ -1,6 +1,7 @@
 {
   "name": "hubit-Cyberpunk",
   "dependencies": {
-    "jquery.mb.ytplayer": "~2.8.0"
+    "jquery.mb.ytplayer": "~2.8.0",
+    "jquery": "~2.1.3"
   }
 }
