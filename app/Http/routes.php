@@ -16,6 +16,8 @@ Route::get('/', 'WelcomeController@index');
 Route::get('dashboard', ['as'   => 'dashboard_path',
                          'uses' => 'DashboardController@index']);
 
+Route::resource('cyberpunks', 'CyberpunksController');
+
 Route::controllers([
 	'auth'     => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

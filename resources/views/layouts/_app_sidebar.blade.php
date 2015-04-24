@@ -27,13 +27,13 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="">
+            <li class="{{ set_active(['dashboard_path']) }}">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li>
-                <a href="cyberpunks_path">
+            <li class="{{ set_active(['cyberpunks.index']) }}">
+                <a href="{!! route('cyberpunks.index') !!}">
                     <i class="fa fa-users"></i> <span>Cyberpunks</span>
                 </a>
             </li>
