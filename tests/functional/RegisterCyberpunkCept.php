@@ -2,6 +2,7 @@
 
 $I = new FunctionalTester($scenario);
 $faker = \Faker\Factory::create();
+$courses = Factory::times(5)->create('App\Course');
 $cyberpunkDummy = ['name'             => $faker->name,
                    'email'            => $faker->email,
                    'deree_student_id' => $faker->unique()->numberBetween(899999, 999999)];
@@ -19,6 +20,8 @@ $I->canSeeCurrentRouteIs('cyberpunks.create');
 $I->fillField('Name:', $cyberpunkDummy['name']);
 $I->fillField('Email:', $cyberpunkDummy['email']);
 $I->fillField('DEREE ID:', $cyberpunkDummy['deree_student_id']);
+$I->selectOption()
+
 $I->click('Update');
 
 $I->seeRecord('cyberpunks', $cyberpunkDummy);

@@ -3,8 +3,12 @@ use Laracasts\TestDummy\Factory;
 
 $I = new FunctionalTester($scenario);
 $cyberpunks = Factory::times(5)->create('App\Cyberpunk');
-$faker = \Faker\Factory::create();
+$courses = Factory::times(5)->create('App\Course');
 $cyberpunk = $cyberpunks[0];
+$cyberpunk->courses()->attach($courses[0]->id);
+
+$faker = \Faker\Factory::create();
+
 $cyberpunkDummy = ['name'             => $faker->name,
                    'email'            => $faker->email,
                    'deree_student_id' => $faker->unique()->numberBetween(0, 999999)];

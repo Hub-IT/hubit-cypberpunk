@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Course;
 use App\Cyberpunk;
 use App\Http\Requests;
 use App\Http\Requests\StoreCyberpunkRequest;
@@ -78,9 +79,11 @@ class CyberpunksController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		$cyberpunk = Cyberpunk::find($id);
+		$cyberpunk = Cyberpunk::with('courses')->where('id', $id)->first();
 
-		return view('cyberpunks.edit', compact('cyberpunk'));
+		$courses = Course::lists('name', 'id');
+
+		return view('cyberpunks.edit', compact('cyberpunk', 'courses'));
 	}
 
 	/**

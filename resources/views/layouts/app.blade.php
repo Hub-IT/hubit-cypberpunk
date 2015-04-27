@@ -11,6 +11,7 @@
     <link href="{!! asset('packages/bower/fontawesome/css/font-awesome.min.css') !!}" rel="stylesheet" type="text/css">
     <!-- page specific plugin styles -->
     @yield('styles')
+    <link href="{!! asset('css/app.css') !!}" rel="stylesheet" type="text/css">
     <!-- Ionicons -->
     <link href="{!! asset('packages/bower/ionicons/css/ionicons.min.css') !!}" rel="stylesheet" type="text/css">
     <!-- Theme style -->
