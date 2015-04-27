@@ -112,7 +112,13 @@ class CoursesController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$course = Course::find($id);
+
+		$course->delete();
+
+		Flash::success('Course successfully deleted!');
+
+		return redirect()->back();
 	}
 
 }

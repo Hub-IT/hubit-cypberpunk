@@ -6,7 +6,7 @@
 
             <li> {!! link_to_route( 'cyberpunks.create', 'Register Cyberpunk', [], []) !!}</li>
 
-            @if( ! empty($cyberpunk->id))
+            @if( ! empty($course->id))
                 <li class="divider"></li>
                 <li>
                     {!! Form::open(['method' => 'DELETE', 'route' => ['cyberpunks.destroy', $cyberpunk->id] ]) !!}

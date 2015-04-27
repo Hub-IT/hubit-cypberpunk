@@ -68,9 +68,8 @@
                         <td>{{ $cyberpunk->email }}</td>
                         <td>{{ $cyberpunk->deree_student_id }}</td>
                         <td>
-                            <input value="@foreach($cyberpunk->courses as $course)
-                                {{ $course->name }},
-                            @endforeach" data-role="tagsinput" disabled class="tags">
+                            <input value="@foreach($cyberpunk->courses as $course){{ $course->name }},@endforeach"
+                                   data-role="tagsinput" disabled class="tags">
                         </td>
                     </tr>
                 @endforeach

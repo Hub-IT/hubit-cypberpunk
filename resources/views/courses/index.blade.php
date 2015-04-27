@@ -54,7 +54,7 @@
                                         $course->id]]) !!}
 
                                         {!! Form::submit('Delete', ['class' => 'btn btn-block btn-warning
-                                        btn-flat']) !!}
+                                        btn-flat', 'id' => 'id-delete-' . $course->id]) !!}
 
                                         {!! Form::close() !!}
                                     </li>

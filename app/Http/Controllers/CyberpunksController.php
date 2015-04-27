@@ -114,6 +114,7 @@ class CyberpunksController extends AdminController {
 	public function destroy($id)
 	{
 		$cyberpunk = Cyberpunk::find($id);
+
 		$cyberpunk->delete();
 
 		Flash::success('Cyberpunk successfully deleted!');

@@ -6,7 +6,7 @@
 
             <li> {!! link_to_route( 'courses.create', 'Register Course', [], []) !!}</li>
 
-            @if( ! empty($course->id))
+            @if( ! empty($courses->id))
                 <li class="divider"></li>
                 <li>
                     {!! Form::open(['method' => 'DELETE', 'route' => ['courses.destroy', $course->id] ]) !!}
