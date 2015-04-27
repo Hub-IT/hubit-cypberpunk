@@ -10,8 +10,7 @@ $cyberpunkDummy = ['name'             => $faker->name,
                    'deree_student_id' => $faker->unique()->numberBetween(0, 999999)];
 
 $I->wantTo('edit all data of a cyberpunk');
-$I->amOnRoute('dashboard_path');
-$I->click('Cyberpunks');
+$I->amOnRoute('cyberpunks.index');
 $I->seeCurrentRouteIs('cyberpunks.index');
 // TODO: attempt to use fuzzy locate; remove id
 $I->click("#id-edit-$cyberpunk->id");

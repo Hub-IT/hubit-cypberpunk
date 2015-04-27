@@ -5,8 +5,9 @@ $faker = \Faker\Factory::create();
 $courseDummy = ['name' => $faker->name];
 
 $I->wantTo('register a new course.');
-$I->amOnRoute('dashboard_path');
-$I->click('Courses');
+
+$I->amOnRoute('courses.index');
+$I->seeCurrentRouteIs('courses.index');
 $I->click('Register Course');
 $I->seeCurrentRouteIs('courses.create');
 // TODO: attempt to use fuzzy locate; remove id

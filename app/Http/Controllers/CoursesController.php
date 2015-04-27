@@ -7,7 +7,12 @@ use App\Http\Requests\UpdateCourseRequest;
 use Illuminate\Support\Facades\Input;
 use Laracasts\Flash\Flash;
 
-class CoursesController extends Controller {
+class CoursesController extends AdminController {
+
+	public function __construct()
+	{
+		parent::__construct();
+	}
 
 	/**
 	 * Display a listing of the resource.

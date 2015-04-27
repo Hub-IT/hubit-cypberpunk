@@ -35,11 +35,14 @@
             <li class="{{ set_active(['cyberpunks.index', 'cyberpunks.edit']) }}">
                 <a href="{!! route('cyberpunks.index') !!}">
                     <i class="fa fa-users"></i> <span>Cyberpunks</span>
+                    <span class="label label-primary pull-right">{{ $totalCyberpunks }}</span>
                 </a>
             </li>
             <li class="{{ set_active(['courses.index', 'courses.edit']) }}">
                 <a href="{!! route('courses.index') !!}">
-                    <i class="fa fa-book"></i> <span>Courses</span>
+                    <i class="fa fa-book"></i>
+                    <span> Courses</span>
+                    <span class="label label-primary pull-right">{{ $totalCourses }}</span>
                 </a>
             </li>
         </ul>

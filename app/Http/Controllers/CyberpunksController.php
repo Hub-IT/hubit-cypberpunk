@@ -7,7 +7,13 @@ use App\Http\Requests\UpdateCyberpunkRequest;
 use Illuminate\Support\Facades\Input;
 use Laracasts\Flash\Flash;
 
-class CyberpunksController extends Controller {
+class CyberpunksController extends AdminController {
+
+
+	public function __construct()
+	{
+		parent::__construct();
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -107,7 +113,11 @@ class CyberpunksController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
-	}
+		$cyberpunk = Cyberpunk::find($id);
+		$cyberpunk->delete();
 
+		Flash::success('Cyberpunk successfully deleted!');
+
+		return redirect()->back();
+	}
 }

@@ -7,9 +7,7 @@ $I->wantTo('view list with all cyberpunks');
 
 $cyberpunks = Factory::times(5)->create('App\Cyberpunk');
 
-$I->amOnRoute('dashboard_path');
-$I->seeCurrentRouteIs('dashboard_path');
-$I->click('Cyberpunks');
+$I->amOnRoute('cyberpunks.index');
 $I->seeCurrentRouteIs('cyberpunks.index');
 $I->see('All Cyberpunks');
 

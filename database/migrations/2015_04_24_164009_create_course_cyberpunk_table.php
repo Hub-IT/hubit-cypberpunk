@@ -18,7 +18,7 @@ class CreateCourseCyberpunkTable extends Migration {
 			$table->integer('cyberpunk_id')->unsigned()->index();
 			$table->foreign('cyberpunk_id')->references('id')
 				->on('cyberpunks')
-				->onDelete('restrict')->onUpdate('cascade');
+				->onDelete('cascade')->onUpdate('cascade');
 
 			$table->integer('course_id')->unsigned()->index();
 			$table->foreign('course_id')->references('id')

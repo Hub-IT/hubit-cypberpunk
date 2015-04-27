@@ -8,8 +8,7 @@ $courses = $course[0];
 $courseDummy = ['name' => $faker->name];
 
 $I->wantTo('edit all data of a course');
-$I->amOnRoute('dashboard_path');
-$I->click('Courses');
+$I->amOnRoute('courses.index');
 $I->seeCurrentRouteIs('courses.index');
 // TODO: attempt to use fuzzy locate; remove id
 $I->click("#id-edit-$courses->id");

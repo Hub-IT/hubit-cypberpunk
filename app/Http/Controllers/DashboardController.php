@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 
-class DashboardController extends Controller {
+class DashboardController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.

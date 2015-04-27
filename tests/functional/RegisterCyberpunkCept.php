@@ -7,8 +7,9 @@ $cyberpunkDummy = ['name'             => $faker->name,
                    'deree_student_id' => $faker->unique()->numberBetween(899999, 999999)];
 
 $I->wantTo('register a new cyberpunk.');
-$I->amOnRoute('dashboard_path');
-$I->click('Cyberpunks');
+
+$I->amOnRoute('cyberpunks.index');
+$I->seeCurrentRouteIs('cyberpunks.index');
 $I->click('Register Cyberpunk');
 $I->seeCurrentRouteIs('cyberpunks.create');
 // TODO: attempt to use fuzzy locate; remove id

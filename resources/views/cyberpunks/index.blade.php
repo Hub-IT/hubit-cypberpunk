@@ -57,7 +57,7 @@
                                         $cyberpunk->id]]) !!}
 
                                         {!! Form::submit('Delete', ['class' => 'btn btn-block btn-warning
-                                        btn-flat']) !!}
+                                        btn-flat', 'id' => 'id-delete-' . $cyberpunk->id]) !!}
 
                                         {!! Form::close() !!}
                                     </li>
