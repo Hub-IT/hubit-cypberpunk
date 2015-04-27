@@ -5,6 +5,7 @@ use App\Cyberpunk;
 use App\Http\Requests;
 use App\Http\Requests\StoreCyberpunkRequest;
 use App\Http\Requests\UpdateCyberpunkRequest;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Laracasts\Flash\Flash;
 
@@ -38,7 +39,9 @@ class CyberpunksController extends AdminController {
 	{
 		$cyberpunk = new Cyberpunk;
 
-		return view('cyberpunks.create', compact('cyberpunk'));
+		$courses = Course::lists('name', 'id');
+
+		return view('cyberpunks.create', compact('cyberpunk', 'courses'));
 	}
 
 	/**
@@ -49,11 +52,20 @@ class CyberpunksController extends AdminController {
 	 */
 	public function store(StoreCyberpunkRequest $cyberpunkRequest)
 	{
-		$data = Input::only(['name', 'email', 'deree_student_id']);
+		$data = Input::only(['name', 'email', 'deree_student_id', 'courses']);
 
-		$cyberpunk = new Cyberpunk($data);
+		$cyberpunk = new Cyberpunk(Input::only(['name', 'email', 'deree_student_id']));
 
 		$cyberpunk->save();
+
+		$courseCyberpunks = [];
+
+		foreach ($data['courses'] as $courseId)
+		{
+			$courseCyberpunks[] = ['course_id' => $courseId, 'cyberpunk_id' => $cyberpunk->id];
+		}
+
+		DB::table('course_cyberpunk')->insert($courseCyberpunks);
 
 		Flash::success("Cyberpunk successfully registered!");
 

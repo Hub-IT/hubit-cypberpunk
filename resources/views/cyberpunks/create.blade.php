@@ -2,11 +2,11 @@
 
 @section('title', 'Register')
 
-@section('styles') @endsection
+@section('styles')
+    <link href="{!! asset('packages/bower/select2/dist/css/select2.min.css') !!}" rel="stylesheet" type="text/css">
+@endsection
 
 @section('inline-styles') @endsection
-
-@section('inline-scripts') @endsection
 
 @section('content-header')
     <h1>
@@ -48,6 +48,14 @@
                 {!! Form::text('deree_student_id', null, ['class' => 'form-control', 'placeholder' => 'Enter ...']) !!}
                 {!! $errors->first('deree_student_id', '<label>:message</label>') !!}
             </div>
+
+            <div class="form-group @if($errors->first('courses')) has-error @endif">
+                {!! Form::label('courses', 'Courses:') !!}
+                {!! Form::select('courses[]', $courses, $cyberpunk->courses->lists('name', 'id'),
+                ['multiple' => 'multiple', 'class' => 'form-control', 'id' => 'courses']) !!}
+                {!! $errors->first('courses', '<label>:message</label>') !!}
+            </div>
+
         </div>
         <!-- /.box-body -->
 
@@ -59,5 +67,16 @@
     </div><!-- /.box -->
     <!-- /.box -->
 
+    @endsection
+
+@section('scripts')
+    <script src="{!! asset('packages/bower/select2/dist/js/select2.min.js') !!}" type="text/javascript"></script>
+@endsection
+@section('inline-scripts')
+    <script type="text/javascript">
+        $('select').select2({
+            placeholder: "Select course(s)"
+        });
+    </script>
 @endsection
 
