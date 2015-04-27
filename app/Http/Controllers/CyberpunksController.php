@@ -107,13 +107,15 @@ class CyberpunksController extends AdminController {
 	 */
 	public function update($id, UpdateCyberpunkRequest $updateCyberpunkRequest)
 	{
-		$data = Input::only(['name', 'email', 'deree_student_id']);
+		$data = Input::only(['name', 'email', 'deree_student_id', 'courses']);
 
 		$cyberpunk = Cyberpunk::find($id);
 
 		$cyberpunk->fill($data);
 
 		$cyberpunk->save();
+
+		$cyberpunk->courses()->sync($data['courses']);
 
 		Flash::success("Cyberpunk successfully updated!");
 

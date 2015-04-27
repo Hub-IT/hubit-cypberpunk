@@ -50,9 +50,9 @@
             </div>
 
             <div class="form-group @if($errors->first('courses')) has-error @endif">
-                {!! Form::label('courses[]', 'Courses:') !!}
+                {!! Form::label('courses', 'Courses:') !!}
                 {!! Form::select('courses[]', $courses, $cyberpunk->courses->lists('id'),
-                ['multiple' => 'multiple', 'class' => 'form-control']) !!}
+                ['multiple' => 'multiple', 'class' => 'form-control',  'id' => 'courses']) !!}
                 {!! $errors->first('courses', '<label>:message</label>') !!}
             </div>
 
